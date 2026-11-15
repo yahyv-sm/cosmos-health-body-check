@@ -1,0 +1,1358 @@
+{
+  "meta": {
+    "title": "Cosmos Health: educational simulation data",
+    "version": "3.2.0",
+    "compiledOn": "2026-11-14",
+    "purpose": "A spaceflight health education simulation using synthetic values and cited NASA/CSA context. The simulated pattern display is project-authored and does not determine real causes or individual risk.",
+    "noThresholds": "The listed NASA/CSA sources do not provide universal clinical thresholds for these indicators. Demo defaults and slider bounds are project-authored interface settings only.",
+    "resourceCoverage": {
+      "officialChallengeResourcesTabReviewed": "2026-11-14",
+      "listedResources": [
+        "nasa_hazards",
+        "nasa_risks",
+        "nasa_ongoing_hrp",
+        "csa_radiation",
+        "csa_experiments"
+      ],
+      "officialChallengeBrief": "challenge_brief",
+      "supplementaryNotChallengeTab": [
+        "jaxa_medops"
+      ],
+      "note": "The official Resources tab listed three NASA resources and two CSA partner resources. JAXA is retained as supplementary source material only; it was not among the five listed links."
+    },
+    "prototypeNotice": "Simulation mode: all displayed values are synthetic. The hazard pattern is a simplified, project-authored demonstration—not a NASA score, probability, diagnosis, causal finding, or medical recommendation. Do not enter real health information.",
+    "emergencyCopy": "For urgent symptoms or immediate danger, follow the appropriate emergency procedures and contact qualified medical support. Do not rely on this simulation.",
+    "assetAttributionReview": "Source and license details for local images and font/CDN assets are not established in this dataset; confirm and list them in challenge submission references.",
+    "bodyHazardMappingMethod": "Body-topic hazard links are derived only from hazardLinks in cited NASA risk records listed in that body panel’s riskRefs. If the source record has no explicit hazardLinks, no body-to-hazard link is shown. These links are educational context, not individual causation."
+  },
+  "sources": [
+    {
+      "id": "challenge_brief",
+      "title": "Create Health Monitoring Software for Astronauts on Space Missions",
+      "org": "NASA Space Apps Challenge",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/",
+      "accessed": "2026-11-14",
+      "resourceRole": "Official challenge brief; not a Resources-tab item.",
+      "verification": "Challenge description reviewed."
+    },
+    {
+      "id": "nasa_hazards",
+      "title": "5 Hazards of Human Spaceflight",
+      "org": "NASA Human Research Program",
+      "url": "https://www.nasa.gov/hrp/hazards/",
+      "pageLastUpdated": "2026-06-12",
+      "accessed": "2026-11-14",
+      "verification": "Page read in full.",
+      "resourceRole": "Listed in the official challenge Resources tab."
+    },
+    {
+      "id": "nasa_risks",
+      "title": "Risks of Human Spaceflight",
+      "org": "NASA Human Research Program",
+      "url": "https://www.nasa.gov/hrp/risks/",
+      "pageLastUpdated": "2026-07-21",
+      "accessed": "2026-11-14",
+      "verification": "Page read in full.",
+      "resourceRole": "Listed in the official challenge Resources tab."
+    },
+    {
+      "id": "nasa_ongoing_hrp",
+      "title": "Ongoing HRP Research in Space",
+      "org": "NASA Human Research Program",
+      "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+      "accessed": "2026-11-14",
+      "resourceRole": "Listed in the official challenge Resources tab.",
+      "verification": "Page reviewed; summaries below are paraphrases."
+    },
+    {
+      "id": "csa_radiation",
+      "title": "Monitoring radiation for astronaut health",
+      "org": "Canadian Space Agency",
+      "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+      "accessed": "2026-11-14",
+      "resourceRole": "Listed in the official challenge Resources tab as a Space Agency Partner resource.",
+      "verification": "Page reviewed; summaries below are paraphrases."
+    },
+    {
+      "id": "csa_experiments",
+      "title": "Why do we conduct science experiments in space?",
+      "org": "Canadian Space Agency",
+      "url": "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
+      "accessed": "2026-11-14",
+      "resourceRole": "Listed in the official challenge Resources tab as a Space Agency Partner resource.",
+      "verification": "Page reviewed; summaries below are paraphrases."
+    },
+    {
+      "id": "jaxa_medops",
+      "title": "Medical Operations Team Activities",
+      "org": "Japan Aerospace Exploration Agency",
+      "url": "https://humans-in-space.jaxa.jp/en/biz-lab/med-in-space/healthcare/medops/system",
+      "accessed": "2026-11-14",
+      "verification": "Search excerpt of the page read; only the facts listed under operationalFacts are used. The page's equipment list was not visible in the excerpt, so nothing else is claimed from it.",
+      "resourceRole": "Supplementary source; not listed in the official challenge Resources tab reviewed for this project."
+    }
+  ],
+  "sourced": {
+    "pageNotes": [
+      {
+        "note": "The five hazards can feed off one another and worsen effects on the human body.",
+        "source": "nasa_hazards"
+      },
+      {
+        "note": "The effects of the risks vary depending on whether humans travel to low Earth orbit, the Moon or Mars.",
+        "source": "nasa_risks"
+      },
+      {
+        "note": "The risks page groups the 17 risks into three sets: human physiology (11), behavioral performance and human factors (5), and space radiation (1).",
+        "source": "nasa_risks"
+      },
+      {
+        "note": "Neither NASA page gives normal ranges, thresholds or measurement procedures for any health indicator.",
+        "source": "nasa_hazards, nasa_risks"
+      }
+    ],
+    "hazards": [
+      {
+        "id": "rad",
+        "name": "Space radiation",
+        "summary": "Invisible to the human eye and considered one of the most hazardous aspects of spaceflight.",
+        "additionalFacts": [],
+        "nasaUrl": "https://www.nasa.gov/hrp/hazard-space-radiation/",
+        "source": "nasa_hazards"
+      },
+      {
+        "id": "iso",
+        "name": "Isolation and confinement",
+        "summary": "Behavioral responses occur among groups of people far from Earth who are isolated and confined in a small space over a long period.",
+        "additionalFacts": [
+          "Crews must be carefully chosen, trained and supported to work effectively as a team for months or years in space."
+        ],
+        "nasaUrl": "https://www.nasa.gov/hrp/hazard-isolation-and-confinement/",
+        "source": "nasa_hazards"
+      },
+      {
+        "id": "dist",
+        "name": "Distance from Earth",
+        "summary": "Instructions, new supplies, medical care and more become harder to receive from Earth as astronauts venture deeper into space.",
+        "additionalFacts": [
+          "Mars is on average 140 million miles from Earth; astronauts would leave for roughly three years instead of a three-day lunar trip.",
+          "Planning and self-sufficiency are key to successful deep-space missions."
+        ],
+        "nasaUrl": "https://www.nasa.gov/hrp/hazard-distance-from-earth/",
+        "source": "nasa_hazards"
+      },
+      {
+        "id": "grav",
+        "name": "Gravity fields",
+        "summary": "Muscles, bones, inner ear and organs must adjust to the new gravities met on the station or spacecraft, on the Moon, on Mars, and on Earth after returning home.",
+        "additionalFacts": [
+          "On Mars astronauts would live and work in three-eighths of Earth's gravitational pull for up to two years."
+        ],
+        "nasaUrl": "https://www.nasa.gov/hrp/hazard-gravity-fields/",
+        "source": "nasa_hazards"
+      },
+      {
+        "id": "env",
+        "name": "Hostile and closed environments",
+        "summary": "Keeping a spacecraft ecosystem safe means managing temperature, pressure and lighting, reducing noise, monitoring microbial communities and tracking immune responses.",
+        "additionalFacts": [
+          "Habitability factors NASA names: temperature, pressure, lighting, noise and the presence of microbes."
+        ],
+        "nasaUrl": "https://www.nasa.gov/hrp/hazard-hostile-closed-environments/",
+        "source": "nasa_hazards"
+      }
+    ],
+    "risks": [
+      {
+        "id": "risk_immune",
+        "name": "Altered immune system responses",
+        "category": "human_physiology",
+        "summary": "Spaceflight stresses can reactivate dormant viruses in astronauts, causing rashes and other symptoms; work continues on understanding immune changes.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-altered-immune-system-responses/",
+        "hazardLinks": [
+          {
+            "hazard": "env",
+            "basis": "hazards page: lists tracking immune responses under hostile/closed environments"
+          }
+        ],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_sensorimotor",
+        "name": "Altered sensorimotor and vestibular function",
+        "category": "human_physiology",
+        "summary": "Astronauts can have motion sickness, trouble with hand-eye or gait coordination, and dizziness during gravity changes, which can make walking or operating a vehicle hard.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-altered-sensorimotor-and-vestibular-function/",
+        "hazardLinks": [
+          {
+            "hazard": "grav",
+            "basis": "risks page: occurs during gravitational changes"
+          }
+        ],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_cardio",
+        "name": "Cardiovascular adaptations",
+        "category": "human_physiology",
+        "summary": "Weightlessness alters blood circulation and heart and blood-vessel function, potentially raising the risk of cardiovascular events.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-cardiovascular-adaptations/",
+        "hazardLinks": [
+          {
+            "hazard": "grav",
+            "basis": "risks page: attributes the change to weightlessness"
+          }
+        ],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_dcs",
+        "name": "Decompression sickness",
+        "category": "human_physiology",
+        "summary": "Moving from a pressurized spacecraft to a lower-pressure spacesuit can make dissolved nitrogen bubble in body tissues, causing health and mission problems.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-decompression-sickness/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_microbiome",
+        "name": "Host-microorganism interactions",
+        "category": "human_physiology",
+        "summary": "Skin and gut microbiomes can change in space, potentially raising crews' risk of getting sick.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-host-microorganism-interactions/",
+        "hazardLinks": [
+          {
+            "hazard": "env",
+            "basis": "hazards page: lists monitoring microbial communities under hostile/closed environments"
+          }
+        ],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_hypoxia",
+        "name": "Hypoxia",
+        "category": "human_physiology",
+        "summary": "Steps to avoid decompression sickness on future deep-space spacewalks also raise the risk of mild hypoxia, meaning lower-than-normal oxygen in body tissues.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-hypoxia/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_nutrition",
+        "name": "Inadequate food and nutrition",
+        "category": "human_physiology",
+        "summary": "A healthy, balanced diet is essential to crew health and performance; research targets enjoyable, long-lasting, nutritious meals and the consequences of inadequate nutrition.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-inadequate-food-and-nutrition/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_spacewalk",
+        "name": "Injury and compromised performance from spacewalks",
+        "category": "human_physiology",
+        "summary": "Suit work is challenging: besides cognitive fatigue and injury, crews manage spacewalk-environment risks including decompression sickness and low oxygen and high carbon dioxide levels.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-injury-and-compromised-performance-from-extravehicular-activity-eva/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_fitness",
+        "name": "Reduced cardiorespiratory and musculoskeletal fitness",
+        "category": "human_physiology",
+        "summary": "All astronauts exercise during their mission to counteract losses in bone density, muscle strength, and heart and blood-vessel performance; researchers study which exercise protects health best.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-reduced-cardiorespiratory-and-musculoskeletal-fitness/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_sans",
+        "name": "Spaceflight associated neuro-ocular syndrome (SANS)",
+        "category": "human_physiology",
+        "summary": "The structure of the eyes and brain can change with spaceflight; research targets the long-term consequences and preventing the changes.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-spaceflight-associated-neuro-ocular-syndrome-sans/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_bone",
+        "name": "Spaceflight-induced bone changes",
+        "category": "human_physiology",
+        "summary": "Without gravity, bones break down and become more brittle, raising the chance of painful breaks; research aims to quantify losses and preserve bone strength through diet, exercise and medication.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-spaceflight-induced-bone-changes/",
+        "hazardLinks": [
+          {
+            "hazard": "grav",
+            "basis": "risks page: attributes the change to absence of gravity"
+          }
+        ],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_behavioral",
+        "name": "Behavioral changes and psychiatric disorders",
+        "category": "behavioral_performance_and_human_factors",
+        "summary": "Isolation, radiation, distance from Earth and other intense stressors may all take a toll on crew mental health; research aims to understand and quantify these risks.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-behavioral-conditions-and-psychiatric-disorders/",
+        "hazardLinks": [
+          {
+            "hazard": "iso",
+            "basis": "risks page names isolation"
+          },
+          {
+            "hazard": "rad",
+            "basis": "risks page names radiation"
+          },
+          {
+            "hazard": "dist",
+            "basis": "risks page names distance from Earth"
+          }
+        ],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_teamwork",
+        "name": "Inadequate teamwork",
+        "category": "behavioral_performance_and_human_factors",
+        "summary": "Selecting crews that work well together is essential; researchers study how teams in prolonged isolation and confinement function efficiently, recover after setbacks, and avoid miscommunication and tension.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-inadequate-teamwork/",
+        "hazardLinks": [
+          {
+            "hazard": "iso",
+            "basis": "risks page names prolonged isolation and confinement"
+          }
+        ],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_sleep",
+        "name": "Inadequate sleep and irregular schedules",
+        "category": "behavioral_performance_and_human_factors",
+        "summary": "Crews face several hazards at once; stressors include chronic sleep loss, constant work demands and irregular internal body clocks, and reducing their effects is ongoing research.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-from-inadequate-sleep-and-irregular-schedules/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_systems",
+        "name": "Inadequate systems operations support",
+        "category": "behavioral_performance_and_human_factors",
+        "summary": "Future deep-space crews may face unexpected software, vehicle or other system problems; research targets when crews need information, what training they need and other support options.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-inadequate-systems-operations-support/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_dynamicloads",
+        "name": "Injury from dynamic loads",
+        "category": "behavioral_performance_and_human_factors",
+        "summary": "Crews risk injury during landing; understanding how likely it is and how to prevent it is ongoing research.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-injury-from-dynamic-loads/",
+        "hazardLinks": [],
+        "source": "nasa_risks"
+      },
+      {
+        "id": "risk_radcancer",
+        "name": "Radiation-induced cancers",
+        "category": "space_radiation",
+        "summary": "Crews exposed to space radiation may be more likely to develop cancer; finding the best mitigation and helpful interventions are ongoing research priorities.",
+        "nasaReferenceUrl": "https://www.nasa.gov/reference/risk-of-radiation-induced-cancers/",
+        "hazardLinks": [
+          {
+            "hazard": "rad",
+            "basis": "risks page: risk comes from radiation from space"
+          }
+        ],
+        "source": "nasa_risks"
+      }
+    ],
+    "operationalFacts": [
+      {
+        "id": "of1",
+        "fact": "JAXA says in-flight health management for astronauts is done remotely, mainly by its designated flight surgeon at NASA Mission Control Houston and by the medical management team at Tsukuba Space Center.",
+        "source": "jaxa_medops"
+      },
+      {
+        "id": "of2",
+        "fact": "That team manages ISS astronauts' health using medical data that includes interviews, examinations and tests, along with physical performance, nutrition and mental health.",
+        "source": "jaxa_medops"
+      },
+      {
+        "id": "of3",
+        "fact": "During spacewalks, astronauts' ECG recordings and other measurements are monitored in real time from mission control centers on Earth.",
+        "source": "jaxa_medops"
+      }
+    ],
+    "challengeIndicators": [
+      {
+        "id": "blood_pressure",
+        "indicator": "Blood pressure",
+        "exampleUnit": null,
+        "evidence": "Named as a useful health indicator in the challenge brief. The brief does not specify a measurement protocol, clinical threshold, or complete measurement fields.",
+        "source": "challenge_brief"
+      },
+      {
+        "id": "heart_rate",
+        "indicator": "Heart rate",
+        "exampleUnit": null,
+        "evidence": "Named as a useful health indicator in the challenge brief. No normal range or alert threshold is supplied.",
+        "source": "challenge_brief"
+      },
+      {
+        "id": "blood_sugar",
+        "indicator": "Blood sugar",
+        "exampleUnit": "mg/dL",
+        "evidence": "Named as an example health indicator; the challenge brief gives mg/dL as an example unit. It does not supply a measurement procedure or clinical threshold.",
+        "source": "challenge_brief"
+      },
+      {
+        "id": "body_temperature",
+        "indicator": "Body temperature",
+        "exampleUnit": null,
+        "evidence": "Named as a useful health indicator in the challenge brief. No measurement site or clinical threshold is supplied.",
+        "source": "challenge_brief"
+      },
+      {
+        "id": "sleep",
+        "indicator": "Daily sleep hours",
+        "exampleUnit": "hours",
+        "evidence": "Named as a useful health indicator in the challenge brief. NASA HRP describes inadequate sleep and irregular schedules as a human-spaceflight risk.",
+        "source": "challenge_brief",
+        "relatedSources": [
+          "nasa_risks"
+        ]
+      },
+      {
+        "id": "mood",
+        "indicator": "Mood",
+        "exampleUnit": null,
+        "evidence": "Named as a useful health indicator in the challenge brief. NASA HRP describes behavioral changes and psychiatric disorders among spaceflight risks.",
+        "source": "challenge_brief",
+        "relatedSources": [
+          "nasa_risks"
+        ]
+      },
+      {
+        "id": "ultrasound",
+        "indicator": "Ultrasound images",
+        "exampleUnit": null,
+        "evidence": "The challenge brief cites ultrasound images as an example of possible input data. It does not define an image-analysis or diagnostic workflow.",
+        "source": "challenge_brief"
+      }
+    ],
+    "hrpResearchHighlights": [
+      {
+        "id": "archer",
+        "name": "ARCHeR",
+        "environment": "Artemis II",
+        "focus": "Monitored astronaut well-being, activity, and sleep patterns to learn about human health and performance in deep space.",
+        "possibleAppUse": "Supports tracking the distinction between self-reported well-being, activity, and sleep as separate longitudinal observations.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "immune_biomarkers",
+        "name": "Immune Biomarkers",
+        "environment": "Artemis II",
+        "focus": "Analyzed blood and saliva samples to investigate how deep space changes the immune system.",
+        "possibleAppUse": "Shows that immune monitoring may include laboratory samples; do not represent temperature alone as an immune test.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "artemis_standard_measures",
+        "name": "Artemis II Standard Measures",
+        "environment": "Artemis II",
+        "focus": "Collected a consistent set of crew health information for a research data bank.",
+        "possibleAppUse": "Supports standardized, documented, repeated observations; the page does not publish a full schema or values.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "standard_measures",
+        "name": "Standard Measures",
+        "environment": "Low Earth orbit",
+        "focus": "Collects a consistent set of physiological and psychological measurements to study how spaceflight affects crew.",
+        "possibleAppUse": "Supports a versioned measurement catalog and repeatable collection protocol.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "cipher",
+        "name": "CIPHER",
+        "environment": "Low Earth orbit",
+        "focus": "A suite of studies examining multiple body systems to better understand human-body changes while orbiting Earth.",
+        "possibleAppUse": "Supports a multi-system view while cautioning against claiming the app itself reproduces the research.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "brain_fluid_pressure",
+        "name": "Brain Fluid Pressure",
+        "environment": "Low Earth orbit",
+        "focus": "Examines relationships between pressure inside the skull and changes to astronauts’ eyes and brain.",
+        "possibleAppUse": "Supports educational links between brain/eye health and research; no simple consumer measurement or threshold is specified.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "venous_haemostasis",
+        "name": "Venous Haemostasis",
+        "environment": "Low Earth orbit",
+        "focus": "Examines physical differences that may contribute to blood-flow and blood-coagulation changes.",
+        "possibleAppUse": "Reference context only; do not derive a blood-clot assessment from routine vitals.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "zero_t2",
+        "name": "Zero T2",
+        "environment": "Low Earth orbit",
+        "focus": "Studies exercise in space without a treadmill and its relationship to human health and performance for deep-space missions.",
+        "possibleAppUse": "Supports recording assigned exercise sessions as activity context, not an invented pass/fail target.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "altered_immunity",
+        "name": "Altered Immunity",
+        "environment": "Past human investigations",
+        "focus": "Analyzed blood, saliva, and urine samples to investigate how spaceflight alters the immune system.",
+        "possibleAppUse": "Shows that immune research can rely on samples and laboratory analysis, not a single proxy metric.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "food_physiology",
+        "name": "Food Physiology",
+        "environment": "Past human investigations",
+        "focus": "Investigated whether an enhanced spaceflight diet could help astronauts adapt to space.",
+        "possibleAppUse": "Supports nutrition context as a topic; the page does not provide dietary prescriptions.",
+        "source": "nasa_ongoing_hrp"
+      },
+      {
+        "id": "tempus_pro",
+        "name": "Tempus Pro",
+        "environment": "Past human investigations",
+        "focus": "Tested a commercial telemedicine device used to collect and integrate health data, potentially enabling remote near-real-time diagnoses.",
+        "possibleAppUse": "Relevant precedent for data integration; do not imply Cosmos Health has this device or diagnostic capability.",
+        "source": "nasa_ongoing_hrp"
+      }
+    ],
+    "radiationMonitoring": [
+      {
+        "fact": "CSA describes CANS as a compact autonomous instrument under continued development to measure neutron radiation exposure in space.",
+        "source": "csa_radiation",
+        "appImplication": "Model radiation observations with sensor identity, measurement time interval, and source; do not claim live CANS integration unless implemented."
+      },
+      {
+        "fact": "CSA says CANS is designed to work continuously and autonomously.",
+        "source": "csa_radiation",
+        "appImplication": "A sensor record should distinguish continuous/instrument-collected measurements from manually entered readings."
+      },
+      {
+        "fact": "The CSA article states neutron radiation contributes about 30% of total radiation on the ISS. This is a source-specific contextual figure, not a universal dose conversion or individual health limit.",
+        "source": "csa_radiation",
+        "appImplication": "If shown, retain the source and ISS context; do not use as a risk score or individual exposure threshold."
+      },
+      {
+        "fact": "The CSA article notes earlier ISS radiation-detection experiments including MOSFET, EVARM, Radi-N, and Radi-N2.",
+        "source": "csa_radiation",
+        "appImplication": "Useful as historical technology context; not evidence that these devices are available to the app."
+      },
+      {
+        "fact": "The CANS article describes potential Earth applications as well as spaceflight applications.",
+        "source": "csa_radiation",
+        "appImplication": "Optional educational context only."
+      }
+    ],
+    "spaceScienceRationale": [
+      {
+        "fact": "CSA describes ISS science as helping prepare for deep-space destinations and using knowledge gained to improve quality of life on Earth.",
+        "source": "csa_experiments"
+      },
+      {
+        "fact": "CSA identifies longer missions as involving more time in weightlessness, more radiation exposure, longer isolation, increased communication delays, and less reliance on Earth for food, materials, and emergency medical assistance.",
+        "source": "csa_experiments"
+      },
+      {
+        "fact": "CSA describes research into bones, heart, blood vessels, and brain, and potential relevance to health issues on Earth.",
+        "source": "csa_experiments"
+      },
+      {
+        "fact": "The CSA page says studying the body in space can provide information about reduced physical activity and conditions affecting older adults on Earth.",
+        "source": "csa_experiments"
+      }
+    ],
+    "resourceToFeatureMap": [
+      {
+        "source": "nasa_hazards",
+        "feature": "Hazard education view",
+        "supportedContent": "The five NASA human-spaceflight hazards and their broad descriptions."
+      },
+      {
+        "source": "nasa_risks",
+        "feature": "Risk/body-system reference",
+        "supportedContent": "NASA HRP risk categories and descriptions; contextual research links, not diagnostic logic."
+      },
+      {
+        "source": "nasa_ongoing_hrp",
+        "feature": "Research evidence and indicator context",
+        "supportedContent": "Examples of ongoing human investigations and types of observations/samples; not a clinical protocol."
+      },
+      {
+        "source": "csa_radiation",
+        "feature": "Radiation-monitoring education and data provenance",
+        "supportedContent": "CANS development context, autonomous neutron monitoring, and named historical ISS detector projects."
+      },
+      {
+        "source": "csa_experiments",
+        "feature": "Mission context and educational rationale",
+        "supportedContent": "Why spaceflight research matters and how deep-space mission conditions motivate health monitoring."
+      },
+      {
+        "source": "challenge_brief",
+        "feature": "Indicator catalog and user workflow requirements",
+        "supportedContent": "Examples of useful indicators, visual tool objective, user data-entry examples, and design questions."
+      }
+    ],
+    "dataBoundaries": [
+      {
+        "statement": "The official challenge resource pages provide explanatory research material, not a ready-to-use crew clinical dataset or universal normal/alert thresholds.",
+        "implication": "Do not create clinical cutoffs from these pages."
+      },
+      {
+        "statement": "NASA ongoing research page summarizes studies but does not provide a complete machine-readable measurement schema or individual crew observations.",
+        "implication": "The app must not present research study descriptions as participant health records."
+      },
+      {
+        "statement": "The CSA CANS article describes an instrument under continued development; it does not provide an integration API, a live data feed, or individual alarm limits.",
+        "implication": "Use this as source context only unless a verified device interface and mission protocol are supplied."
+      },
+      {
+        "statement": "The challenge brief gives example indicators and an example unit for blood sugar, but does not define all measurement procedures, personal baselines, or action thresholds.",
+        "implication": "Require protocol/equipment context for operational use; make missing protocol explicit."
+      }
+    ],
+    "indicatorSupportAudit": [
+      {
+        "prototypeIndicator": "sleep",
+        "prototypeId": "sleep",
+        "supportLevel": "directly named by challenge and supported by NASA research context",
+        "sources": [
+          "challenge_brief",
+          "nasa_risks",
+          "nasa_ongoing_hrp"
+        ],
+        "assessment": "Daily sleep hours is an example indicator in the brief. NASA HRP lists inadequate sleep/irregular schedules as a risk; NASA research includes sleep-pattern studies. The pages give no universal sleep threshold.",
+        "provenanceCategory": "Directly named by the challenge"
+      },
+      {
+        "prototypeIndicator": "mood",
+        "prototypeId": "mood",
+        "supportLevel": "directly named by challenge and supported by NASA risk context",
+        "sources": [
+          "challenge_brief",
+          "nasa_risks"
+        ],
+        "assessment": "Mood is named in the brief; behavioral changes and psychiatric disorders are NASA HRP risks. No validated mood scale, threshold, or questionnaire is supplied.",
+        "provenanceCategory": "Directly named by the challenge"
+      },
+      {
+        "prototypeIndicator": "heart rate",
+        "prototypeId": "hr",
+        "supportLevel": "directly named by challenge",
+        "sources": [
+          "challenge_brief"
+        ],
+        "assessment": "Heart rate is an example indicator in the challenge brief. The linked challenge resources do not supply a collection protocol, personal baseline, or alert threshold.",
+        "provenanceCategory": "Directly named by the challenge"
+      },
+      {
+        "prototypeIndicator": "blood pressure (current UI stores systolic only)",
+        "prototypeId": "sys",
+        "supportLevel": "directly named generally; current simulation field is systolic-only",
+        "sources": [
+          "challenge_brief"
+        ],
+        "assessment": "Blood pressure is named in the challenge brief, but the current simulation field captures only systolic pressure. The brief does not specify systolic-only interpretation or thresholds. A complete real measurement requires the assigned full measurement and context.",
+        "provenanceCategory": "Directly named by the challenge"
+      },
+      {
+        "prototypeIndicator": "blood sugar",
+        "prototypeId": "glu",
+        "supportLevel": "directly named with example unit",
+        "sources": [
+          "challenge_brief"
+        ],
+        "assessment": "The brief names blood sugar and gives mg/dL as an example unit. It does not establish how often to measure, which crew need testing, or any threshold.",
+        "provenanceCategory": "Directly named by the challenge"
+      },
+      {
+        "prototypeIndicator": "body temperature",
+        "prototypeId": "temp",
+        "supportLevel": "directly named by challenge",
+        "sources": [
+          "challenge_brief"
+        ],
+        "assessment": "Body temperature is an example indicator. The resources do not define the measurement site, device, or threshold.",
+        "provenanceCategory": "Directly named by the challenge"
+      },
+      {
+        "prototypeIndicator": "exercise completed",
+        "prototypeId": "ex",
+        "supportLevel": "supported as mission practice, not a target metric",
+        "sources": [
+          "nasa_risks",
+          "nasa_ongoing_hrp"
+        ],
+        "assessment": "NASA HRP says astronauts exercise during missions to counter loss of bone density, muscle strength, and cardiovascular performance; ongoing HRP research includes exercise studies. No number of minutes is an official target in these sources.",
+        "provenanceCategory": "Project-authored extension"
+      },
+      {
+        "prototypeIndicator": "radiation dose",
+        "prototypeId": "rad",
+        "supportLevel": "strong context for monitoring; interval/unit/individual action limits not specified",
+        "sources": [
+          "nasa_hazards",
+          "nasa_risks",
+          "csa_radiation"
+        ],
+        "assessment": "Radiation is a human-spaceflight hazard; CSA describes a neutron radiation instrument under continued development that is designed for continuous autonomous measurement. The resources do not define a daily mSv input field or an individual alarm limit.",
+        "provenanceCategory": "Project-authored extension"
+      },
+      {
+        "prototypeIndicator": "cabin CO2",
+        "prototypeId": "co2",
+        "supportLevel": "limited/context-specific support",
+        "sources": [
+          "nasa_risks",
+          "nasa_hazards"
+        ],
+        "assessment": "NASA HRP mentions high carbon dioxide in the spacewalk environment and environmental management in closed habitats. The resources do not establish a cabin CO2 percent field, instrument specification, or safe threshold. Prefer mission environmental sensor data and approved vehicle limits.",
+        "provenanceCategory": "Project-authored extension"
+      },
+      {
+        "prototypeIndicator": "days since personal support contact",
+        "prototypeId": "call",
+        "supportLevel": "hazard context only; this exact measure is project-authored",
+        "sources": [
+          "nasa_hazards",
+          "nasa_risks",
+          "csa_experiments"
+        ],
+        "assessment": "Isolation, distance, and communication delays are described as mission concerns. None of the listed resources prescribes a contact interval or days-since-contact threshold. Treat as an optional crew-defined well-being prompt only, not a clinical indicator.",
+        "provenanceCategory": "Project-authored extension"
+      }
+    ],
+    "implementationGaps": [
+      {
+        "gap": "The current interface uses project-authored slider minima, maxima, defaults, and a fictional pattern calculation; none is NASA or clinical scoring logic.",
+        "action": "Keep these values labeled as demo/UI configuration. Do not attribute them to official resource material or use them as medical thresholds."
+      },
+      {
+        "gap": "Blood pressure is represented as systolic only.",
+        "action": "Replace with a complete mission-assigned measurement model or mark clearly that this one field is not a full blood-pressure record."
+      },
+      {
+        "gap": "Radiation field uses mSv, but the CSA resource describes neutron monitoring and autonomous instrumentation without prescribing this field, interval, or personal limit.",
+        "action": "Preserve the instrument-reported unit, radiation type, and measurement interval; do not assume a universal conversion or daily total."
+      },
+      {
+        "gap": "Cabin CO2 is displayed as a percent slider, while official resources do not specify this exact measurement design or threshold.",
+        "action": "Only use readings from an assigned environmental sensor and mission-approved protocol."
+      },
+      {
+        "gap": "Personal contact days is not a specified measure in the official resource list.",
+        "action": "Make optional, crew-controlled, and separate from clinical status."
+      },
+      {
+        "gap": "The five challenge Resources-tab links are information/research pages, not a downloadable clinical dataset or operational device feed.",
+        "action": "Use them for evidence-backed educational context and data-model design; acquire mission-specific operational limits and device interface specifications from authorized sources."
+      }
+    ]
+  },
+  "projectAuthored": {
+    "notice": "Project-authored educational interface content. All defaults and check-ins are synthetic demo data and do not constitute clinical guidance.",
+    "inputs": [
+      {
+        "id": "sleep",
+        "question": "How did you sleep last night?",
+        "unit": "h",
+        "min": 4,
+        "max": 9,
+        "step": 0.5,
+        "default": 6.5,
+        "method": "Enter a self-reported estimate in hours for the prior sleep period.",
+        "context": "A trend-oriented self-report, not a diagnosis. The interface does not assess health or apply an individual threshold.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "mood",
+        "question": "How are you feeling today?",
+        "unit": "/10",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "default": 7,
+        "method": "Optional, non-clinical self-report using this project-authored demo scale.",
+        "context": "The demo scale is not validated and is not an assessment. This prompt may be skipped; no diagnosis or behavioral-health evaluation is performed.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges.",
+        "optional": true,
+        "defaultIncluded": false,
+        "nonClinical": true,
+        "optionalNote": "Optional and non-clinical; leave it out if you do not want to include this demo response."
+      },
+      {
+        "id": "hr",
+        "question": "What is your resting heart rate?",
+        "unit": "bpm",
+        "min": 45,
+        "max": 110,
+        "step": 1,
+        "default": 68,
+        "method": "Synthetic slider stand-in for a heart-rate value; no sensor or measurement workflow is connected.",
+        "context": "No measurement protocol, personal baseline, threshold, or sensor workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "sys",
+        "question": "Blood pressure, systolic",
+        "unit": "mmHg",
+        "min": 90,
+        "max": 160,
+        "step": 1,
+        "default": 118,
+        "method": "Synthetic slider stand-in for a systolic blood-pressure value; no cuff or measurement workflow is connected.",
+        "context": "No measurement protocol, personal baseline, threshold, or device workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "glu",
+        "question": "Blood sugar",
+        "unit": "mg/dL",
+        "min": 70,
+        "max": 160,
+        "step": 1,
+        "default": 95,
+        "method": "Synthetic slider stand-in for a blood glucose value; no meter or measurement workflow is connected.",
+        "context": "No measurement protocol, personal baseline, threshold, or device workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "temp",
+        "question": "Body temperature",
+        "unit": "°C",
+        "min": 35.5,
+        "max": 38.5,
+        "step": 0.1,
+        "default": 36.6,
+        "method": "Synthetic slider stand-in for a body temperature value; no thermometer or measurement workflow is connected.",
+        "context": "No measurement protocol, personal baseline, threshold, or device workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "ex",
+        "question": "Exercise completed today",
+        "unit": "min",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 90,
+        "method": "Synthetic slider stand-in for daily exercise duration; no workout log or measurement workflow is connected.",
+        "context": "No exercise protocol, personal baseline, threshold, or tracking workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "rad",
+        "question": "Personal dosimeter reading",
+        "unit": "mSv",
+        "min": 0,
+        "max": 1.0,
+        "step": 0.01,
+        "default": 0.08,
+        "method": "Synthetic slider stand-in for a radiation dose value; no dosimeter or measurement workflow is connected.",
+        "context": "No measurement protocol, personal baseline, threshold, or device workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "co2",
+        "question": "Cabin carbon dioxide reading",
+        "unit": "%",
+        "min": 0.1,
+        "max": 1.0,
+        "step": 0.01,
+        "default": 0.35,
+        "method": "Synthetic slider stand-in for a cabin CO2 value; no air sensor or measurement workflow is connected.",
+        "context": "No measurement protocol, vehicle baseline, threshold, or sensor workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      },
+      {
+        "id": "call",
+        "question": "Days since last personal support contact",
+        "unit": "days",
+        "min": 0,
+        "max": 7,
+        "step": 1,
+        "default": 1,
+        "method": "Synthetic slider stand-in for a contact-interval value; no communication log or measurement workflow is connected.",
+        "context": "No contact protocol, personal baseline, threshold, or tracking workflow is encoded in this demo. The interface does not interpret the value.",
+        "demoOnly": true,
+        "rangeNote": "Synthetic demo control bounds only; not NASA/CSA limits, medical thresholds, or safe/unsafe ranges."
+      }
+    ],
+    "bodyPanels": [
+      {
+        "id": "brain",
+        "n": "Brain and behavioral health",
+        "loc": "Head",
+        "indicators": [
+          "sleep",
+          "mood"
+        ],
+        "fn": "Supports thinking, mood, behavior, and sleep timing.",
+        "me": "Log sleep and mood consistently; use mission-approved behavioral-health check-ins when assigned.",
+        "why": "Isolation, radiation, distance from Earth and other intense stressors may all take a toll on crew mental health; research aims to understand and quantify these risks. Crews face several hazards at once; stressors include chronic sleep loss, constant work demands and irregular internal body clocks, and reducing their effects is ongoing research.",
+        "whySource": [
+          "nasa_risks"
+        ],
+        "riskRefs": [
+          {
+            "risk": "risk_behavioral",
+            "basis": "names mental health"
+          },
+          {
+            "risk": "risk_sleep",
+            "basis": "topic match: sleep"
+          }
+        ]
+      },
+      {
+        "id": "eyes",
+        "n": "Eyes and vision",
+        "loc": "Eyes",
+        "indicators": [
+          "rad"
+        ],
+        "fn": "Vision depends on the eye and visual pathways.",
+        "me": "Use the mission-provided vision check only if assigned; record blurred vision, visual-field changes, headache, onset, and progression.",
+        "why": "The structure of the eyes and brain can change with spaceflight; research targets the long-term consequences and preventing the changes.",
+        "whySource": [
+          "nasa_risks"
+        ],
+        "riskRefs": [
+          {
+            "risk": "risk_sans",
+            "basis": "names the eyes"
+          }
+        ]
+      },
+      {
+        "id": "lungs",
+        "n": "Breathing and cabin air",
+        "loc": "Chest",
+        "indicators": [
+          "co2"
+        ],
+        "fn": "Breathing exchanges oxygen and carbon dioxide; cabin systems manage the habitat atmosphere.",
+        "me": "Check the designated cabin air sensor and note cough, breathlessness, or headache; sensor checks do not replace medical assessment.",
+        "why": "Keeping a spacecraft ecosystem safe means managing temperature, pressure and lighting, reducing noise, monitoring microbial communities and tracking immune responses.",
+        "whySource": [
+          "nasa_hazards"
+        ],
+        "riskRefs": [],
+        "note": "NASA's risks page lists no risk specific to breathing or cabin air; text comes from the hazards page (closed environments)."
+      },
+      {
+        "id": "heart",
+        "n": "Heart and circulation",
+        "loc": "Chest",
+        "indicators": [
+          "hr",
+          "sys"
+        ],
+        "fn": "The cardiovascular system moves blood and adapts to changes in gravity.",
+        "me": "Use approved heart-rate and blood-pressure equipment as trained; record full values, posture, timing, symptoms, and comparison to baseline.",
+        "why": "Weightlessness alters blood circulation and heart and blood-vessel function, potentially raising the risk of cardiovascular events.",
+        "whySource": [
+          "nasa_risks"
+        ],
+        "riskRefs": [
+          {
+            "risk": "risk_cardio",
+            "basis": "names the heart and blood vessels"
+          }
+        ]
+      },
+      {
+        "id": "immune",
+        "n": "Immune health",
+        "loc": "Whole body",
+        "indicators": [
+          "temp",
+          "sleep"
+        ],
+        "fn": "Immune responses help the body respond to infection and other threats.",
+        "me": "Follow the mission symptom-reporting and temperature-check procedure; record onset and relevant exposure.",
+        "why": "Spaceflight stresses can reactivate dormant viruses in astronauts, causing rashes and other symptoms; work continues on understanding immune changes.",
+        "whySource": [
+          "nasa_risks"
+        ],
+        "riskRefs": [
+          {
+            "risk": "risk_immune",
+            "basis": "names the immune system"
+          }
+        ]
+      },
+      {
+        "id": "meta",
+        "n": "Nutrition and metabolism",
+        "loc": "Whole body",
+        "indicators": [
+          "glu"
+        ],
+        "fn": "Food and fluid intake support energy, health, and performance.",
+        "me": "Use assigned food/fluid logs or glucose testing only when part of the individual medical plan; include meal timing and symptoms.",
+        "why": "A healthy, balanced diet is essential to crew health and performance; research targets enjoyable, long-lasting, nutritious meals and the consequences of inadequate nutrition.",
+        "whySource": [
+          "nasa_risks"
+        ],
+        "riskRefs": [
+          {
+            "risk": "risk_nutrition",
+            "basis": "topic match: nutrition"
+          }
+        ]
+      },
+      {
+        "id": "bones",
+        "n": "Bones and muscle",
+        "loc": "Spine, back, and legs",
+        "indicators": [
+          "ex"
+        ],
+        "fn": "Bones and muscles support movement, posture, strength, and physical function.",
+        "me": "Log assigned exercise and report new pain, injury, weakness, or reduced function; formal assessment follows mission schedule.",
+        "why": "Without gravity, bones break down and become more brittle, raising the chance of painful breaks; research aims to quantify losses and preserve bone strength through diet, exercise and medication. All astronauts exercise during their mission to counteract losses in bone density, muscle strength, and heart and blood-vessel performance; researchers study which exercise protects health best.",
+        "whySource": [
+          "nasa_risks"
+        ],
+        "riskRefs": [
+          {
+            "risk": "risk_bone",
+            "basis": "names bones"
+          },
+          {
+            "risk": "risk_fitness",
+            "basis": "names bone density and muscle strength"
+          }
+        ]
+      }
+    ],
+    "measurementNotes": {
+      "crew-measurable-or-self-reported": [
+        "sleep duration and sleep quality",
+        "mood and symptoms",
+        "heart rate using assigned equipment",
+        "blood pressure using an assigned cuff",
+        "temperature using an approved thermometer",
+        "blood glucose only when assigned and trained",
+        "exercise log"
+      ],
+      "vehicle-or-mission-system-data": [
+        "radiation dosimeter/environmental readings",
+        "cabin CO2 and other air-quality sensor data",
+        "air-system alarms and mission alerts"
+      ],
+      "operational-not-biomarker": [
+        "distance-related communication delay, medical-supply status, and onboard medical capability"
+      ],
+      "note": "Availability varies by vehicle, mission, hardware, crew training, and medical orders. Keep environmental readings distinct from body temperature, and retain instrument units and averaging intervals."
+    },
+    "simulationModel": {
+      "name": "Synthetic hazard-pattern demonstration",
+      "label": "Simulated association index",
+      "method": "For each included input, calculate the absolute difference from its project-authored default, divided by its project-authored slider span, then expressed from 0 to 100. For each indicator, gather hazard topics from body panels that list that indicator and from the direct mappings below. A hazard value is the average deviation for distinct included indicators mapped to it whose value differs from its synthetic default; unchanged inputs contribute no deviation. This is a deliberately simplified project-authored simulation rule. It is not calibrated or validated, not a probability, personal risk estimate, cause, health-status label, NASA method, or clinical threshold. Slider bounds are used only to normalize the fictional display.",
+      "mappingNote": "Body-panel links are contextual associations from the cited risk records. Direct indicator mappings are project-authored educational links; sources describe topics and do not validate this model.",
+      "zeroState": "All included inputs are at their synthetic defaults, so this simulation has no non-zero pattern match. Change a synthetic input to explore contextual links.",
+      "noLinksState": "No source-linked hazard topic is connected to the changed inputs in the current data. The interface will not guess a hazard.",
+      "uncertainty": "A highlighted hazard is only the top match in this fictional rule demonstration. It is not evidence that the hazard caused a reading, and the index is not a likelihood or risk estimate.",
+      "directMappings": [
+        {
+          "indicator": "rad",
+          "hazards": [
+            "rad"
+          ],
+          "basis": "Radiation is the subject of this sensor-context input; an exposure-topic link is not evidence of an individual health effect.",
+          "sources": [
+            "nasa_hazards",
+            "csa_radiation"
+          ]
+        },
+        {
+          "indicator": "call",
+          "hazards": [
+            "iso",
+            "dist"
+          ],
+          "basis": "This optional project-authored contact prompt can illustrate NASA/CSA isolation and distance context; it is not a prescribed contact interval or health measure.",
+          "sources": [
+            "nasa_hazards",
+            "csa_experiments"
+          ]
+        }
+      ],
+      "nextStepByHazard": {
+        "rad": "Simulation step: review the synthetic radiation input, unit and recorded interval, then open the cited radiation-monitoring context. This is not a real exposure response.",
+        "iso": "Simulation step: review the optional synthetic mood/contact prompts and their context; they are not mental-health assessments or schedules.",
+        "dist": "Simulation step: review the optional synthetic contact prompt and the cited communication-delay context; it does not prescribe a contact interval.",
+        "grav": "Simulation step: inspect the included synthetic heart-indicator values and the cited gravity research; this is not a clinical interpretation or exercise prescription.",
+        "env": "Simulation step: inspect the synthetic indicator context and cited habitat research; real environmental readings require assigned sensor procedures."
+      },
+      "defaultNextStep": "Simulation step: change a synthetic input to explore the interface, or open a cited hazard description. No real-world action is generated."
+    },
+    "symptomLog": {
+      "heading": "Describe this area",
+      "intro": "Each scale starts centered but remains Not rated until you move or interact with it. If you choose to add a check-in, answer all four sliders, including 0 if that is your answer. These project-authored prompts are self-report only, not a medical assessment.",
+      "privacyNote": "Demo only: do not enter real health information. Entries stay in this page session's memory only; reloading or closing the page clears them. No account or database is used.",
+      "interpretationNote": "Your answers are shown back as entered. They do not affect the hazard diagram, body-region colors, or simulation score. No diagnosis, cause, or treatment is inferred.",
+      "completionMessage": "Please move each of the four sliders to record your response, including 0 if that is your answer.",
+      "emptyHistory": "No symptom entries for this body area in this page session.",
+      "savedMessage": "Added your self-reported answers to this page session only.",
+      "clearedMessage": "Cleared this body's symptom draft and session log.",
+      "addLabel": "Add to this session log",
+      "clearLabel": "Clear this region's session log",
+      "questions": [
+        {
+          "id": "intensity",
+          "question": "How strong does this sensation or discomfort feel?",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "lowLabel": "Not at all",
+          "middleLabel": "5",
+          "highLabel": "As strongly as you can imagine"
+        },
+        {
+          "id": "activity",
+          "question": "How much is it affecting what you usually do?",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "lowLabel": "Not at all",
+          "middleLabel": "5",
+          "highLabel": "Unable to do usual activities"
+        },
+        {
+          "id": "frequency",
+          "question": "How often have you noticed it recently?",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "lowLabel": "Not at all",
+          "middleLabel": "5",
+          "highLabel": "Almost constantly"
+        },
+        {
+          "id": "change",
+          "question": "Compared with when you first noticed it, how has it changed?",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "lowLabel": "Much less noticeable",
+          "middleLabel": "About the same",
+          "highLabel": "Much more noticeable"
+        }
+      ],
+      "sectionTitle": "Symptom check-in",
+      "sectionIntro": "Choose a highlighted body area in the map above. The four sliders below apply only to the selected area.",
+      "historyHeading": "Session entries"
+    },
+    "environments": {
+      "heading": "Mission environment",
+      "intro": "Select your current mission environment. This adjusts which indicators are most relevant to your context and provides environment-specific guidance. The core simulation remains the same — only the contextual emphasis changes.",
+      "note": "Environment selection is a project-authored contextual filter only. It does not change the simulation calculation, clinical interpretation, or hazard scores. All indicators remain available in all environments.",
+      "items": [
+        {
+          "id": "station",
+          "name": "Space Station",
+          "icon": "🛰️",
+          "tagline": "Low Earth orbit · ISS-class",
+          "description": "A permanently crewed orbital habitat with regular resupply, real-time ground support, and established medical protocols.",
+          "keyFeatures": [
+            "Regular resupply every ~90 days",
+            "Real-time communication with Earth",
+            "Established exercise countermeasures",
+            "Flight surgeon support available"
+          ],
+          "indicatorEmphasis": {
+            "primary": [
+              "ex",
+              "sleep",
+              "mood",
+              "hr",
+              "sys"
+            ],
+            "secondary": [
+              "temp",
+              "glu",
+              "co2",
+              "call"
+            ],
+            "contextual": [
+              "rad"
+            ]
+          },
+          "environmentNotes": {
+            "ex": "Daily exercise is critical to combat bone and muscle loss in microgravity.",
+            "sleep": "16 sunrises per day disrupt circadian rhythm; consistent sleep schedule is essential.",
+            "mood": "Long-duration confinement with the same crew requires proactive mental health management.",
+            "co2": "Cabin CO2 tends to accumulate near sleeping quarters due to limited air circulation.",
+            "call": "Regular contact with family and ground teams is readily available — use it."
+          },
+          "hazardContext": {
+            "grav": "Primary hazard — continuous microgravity affects all body systems.",
+            "iso": "Moderate — crew size and Earth views help, but confinement duration matters.",
+            "rad": "Lower than deep space but still elevated vs Earth; ISS shielding provides protection.",
+            "dist": "Minimal — Earth is visible and communication is near real-time.",
+            "env": "Managed life support with regular maintenance; CO2 and microbial monitoring ongoing."
+          }
+        },
+        {
+          "id": "spacecraft",
+          "name": "Deep Space Craft",
+          "icon": "🚀",
+          "tagline": "Transit vehicle · Orion-class",
+          "description": "A crewed vehicle in transit between Earth and deep-space destinations. Limited volume, no resupply, and communication delays increase self-reliance requirements.",
+          "keyFeatures": [
+            "No resupply during transit",
+            "Communication delay up to 20 minutes each way",
+            "Limited exercise equipment",
+            "Autonomous medical capability required"
+          ],
+          "indicatorEmphasis": {
+            "primary": [
+              "rad",
+              "sleep",
+              "mood",
+              "call",
+              "temp"
+            ],
+            "secondary": [
+              "hr",
+              "sys",
+              "ex",
+              "glu"
+            ],
+            "contextual": [
+              "co2"
+            ]
+          },
+          "environmentNotes": {
+            "rad": "Outside Earth's magnetosphere, radiation exposure increases significantly. Monitor dosimeter readings closely.",
+            "call": "Communication delay means real-time conversations aren't possible. Record messages and schedule async contact.",
+            "sleep": "No natural light cycle; strict artificial lighting protocol needed for circadian entrainment.",
+            "mood": "Extreme isolation from Earth; crew cohesion and mental resilience are critical.",
+            "ex": "Exercise equipment is limited; adapt routines to available resistance devices."
+          },
+          "hazardContext": {
+            "rad": "Primary hazard — no magnetosphere protection; solar particle events are a serious risk.",
+            "dist": "Major factor — communication delays up to 20+ minutes; autonomous decision-making required.",
+            "iso": "High — small crew, no external views of Earth for much of transit, no resupply.",
+            "grav": "Microgravity throughout transit; exercise countermeasures are essential but equipment-limited.",
+            "env": "Closed loop life support; any failure is critical with no external support."
+          }
+        },
+        {
+          "id": "rover",
+          "name": "Surface Rover",
+          "icon": "🚙",
+          "tagline": "Planetary surface vehicle · Pressurized",
+          "description": "A pressurized rover for surface exploration on the Moon or Mars. Short-duration missions from a base, with partial gravity and EVA exposure.",
+          "keyFeatures": [
+            "Partial gravity (1/6 or 3/8 Earth)",
+            "EVA exposure during excursions",
+            "Limited habitability volume",
+            "Dust and radiation exposure during EVAs"
+          ],
+          "indicatorEmphasis": {
+            "primary": [
+              "ex",
+              "temp",
+              "hr",
+              "sys",
+              "sleep"
+            ],
+            "secondary": [
+              "rad",
+              "mood",
+              "glu"
+            ],
+            "contextual": [
+              "co2",
+              "call"
+            ]
+          },
+          "environmentNotes": {
+            "ex": "Partial gravity provides some loading but not enough; continue resistance exercise.",
+            "temp": "Thermal regulation is challenging in a small pressurized volume; monitor closely.",
+            "rad": "Surface radiation is higher than Earth; EVA duration tracking is important.",
+            "sleep": "Surface operations may disrupt sleep with mission schedules; protect rest periods.",
+            "hr": "Cardiovascular adaptation to partial gravity; monitor for orthostatic intolerance."
+          },
+          "hazardContext": {
+            "grav": "Partial gravity (1/6 Moon, 3/8 Mars) — different challenges than microgravity.",
+            "rad": "No atmosphere on Moon, thin on Mars; surface radiation is a significant concern.",
+            "env": "Dust infiltration is a persistent problem; life support works harder in a small volume.",
+            "iso": "Small crew in confined rover for days; psychological factors matter.",
+            "dist": "Depends on location — Mars has significant delay, Moon has minimal delay."
+          }
+        },
+        {
+          "id": "base",
+          "name": "Surface Base",
+          "icon": "🏠",
+          "tagline": "Planetary outpost · Long-duration",
+          "description": "A permanent or semi-permanent surface habitat on the Moon or Mars. Longest-duration stays with the most self-sufficient operations.",
+          "keyFeatures": [
+            "Multi-month to multi-year stays",
+            "In-situ resource utilization",
+            "Most isolated environment",
+            "Dust mitigation is ongoing"
+          ],
+          "indicatorEmphasis": {
+            "primary": [
+              "sleep",
+              "mood",
+              "ex",
+              "call",
+              "rad"
+            ],
+            "secondary": [
+              "temp",
+              "hr",
+              "sys",
+              "glu",
+              "co2"
+            ],
+            "contextual": []
+          },
+          "environmentNotes": {
+            "sleep": "Extended stay means circadian rhythm must be maintained without natural light cues.",
+            "mood": "Most isolated environment; Earth is just a point of light. Proactive mental health care is essential.",
+            "call": "Communication delay varies by location; async messaging becomes the norm.",
+            "ex": "Long-term partial gravity effects are unknown; aggressive exercise countermeasures needed.",
+            "rad": "Cumulative radiation exposure over months/years is a major health concern."
+          },
+          "hazardContext": {
+            "iso": "Primary hazard — most isolated human environment ever inhabited.",
+            "dist": "Mars: up to 22-minute one-way delay; Moon: near real-time but no rescue possible.",
+            "rad": "Cumulative exposure over long stays; shielding and storm shelters essential.",
+            "grav": "Partial gravity long-term effects on bone, muscle, cardiovascular system are unknown.",
+            "env": "Dust, limited repair capability, closed life support over extended periods."
+          }
+        }
+      ]
+    }
+  }
+}
